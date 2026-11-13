@@ -1,11 +1,9 @@
+import type { Metadata } from "next"
 
+import { LoginForm } from "@/components/auth/login-form"
 
-function LoginPage() {
-  return (
-    <div>
-      <p>This is the login page</p>
-    </div>
-  )
+export const metadata: Metadata = { title: "Log in" }
+
+export default function LoginPage() {
+  return <LoginForm />
 }
-
-export default LoginPage
