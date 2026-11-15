@@ -1,10 +1,9 @@
 import Link from "next/link"
-import { CalendarCheck, Clock, Video } from "lucide-react"
+import { CalendarCheck, Clock, Stethoscope } from "lucide-react"
 
 import { Highlight } from "@/components/brand/highlight"
 import { Logo } from "@/components/brand/logo"
 import { SiteFooter } from "@/components/layout/site-footer"
-import { TopBar } from "@/components/layout/top-bar"
 import { Button } from "@/components/ui/button"
 import { services } from "@/lib/services"
 
@@ -16,16 +15,15 @@ const steps = [
   },
   { icon: Clock, title: "Choose a time", text: "See open slots and pick one." },
   {
-    icon: Video,
+    icon: Stethoscope,
     title: "Meet your provider",
-    text: "By telehealth or in person.",
+    text: "Get care from a provider who listens.",
   },
 ]
 
 export default function HomePage() {
   return (
     <div className="flex min-h-svh flex-col">
-      <TopBar />
       <header className="border-b bg-background">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <Logo />
@@ -44,8 +42,7 @@ export default function HomePage() {
             Book your visit with <Highlight>Cyprex Health</Highlight>
           </h1>
           <p className="max-w-xl text-lg text-muted-foreground">
-            Schedule telehealth or in-person appointments, and manage your
-            upcoming visits in one place.
+            Schedule appointments and manage your upcoming visits in one place.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button asChild size="lg" className="h-11 rounded-full px-6">

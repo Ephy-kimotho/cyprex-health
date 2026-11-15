@@ -1,12 +1,11 @@
-import { CalendarCheck, ShieldCheck, Video } from "lucide-react"
+import { CalendarCheck, ShieldCheck, Stethoscope } from "lucide-react"
 
 import { Logo } from "@/components/brand/logo"
 import { SiteFooter } from "@/components/layout/site-footer"
-import { TopBar } from "@/components/layout/top-bar"
 
 const highlights = [
   { icon: CalendarCheck, text: "Book, reschedule or cancel in a few clicks" },
-  { icon: Video, text: "Telehealth or in-person visits" },
+  { icon: Stethoscope, text: "Choose the provider that suits you" },
   { icon: ShieldCheck, text: "Your information stays private" },
 ]
 
@@ -17,7 +16,6 @@ export default function AuthLayout({
 }) {
   return (
     <div className="flex min-h-svh flex-col">
-      <TopBar />
       <header className="border-b bg-background">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <Logo />

@@ -17,7 +17,7 @@ export default function ServicesPage() {
             Treatments that <Highlight>actually work</Highlight>
           </>
         }
-        description="Choose a service to book a visit. Every service is available by telehealth or in person."
+        description="Choose a service to book a visit."
       />
       <div className="grid gap-4 sm:grid-cols-2">
         {services.map((service) => (
