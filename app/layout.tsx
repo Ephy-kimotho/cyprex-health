@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     default: "Cyprex Health",
     template: "%s | Cyprex Health",
   },
-  description: "Book telehealth and in-person visits with Cyprex Health.",
+  description: "Book visits with Cyprex Health.",
 }
 
 export default function RootLayout({

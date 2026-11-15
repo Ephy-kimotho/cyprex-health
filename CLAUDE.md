@@ -30,7 +30,7 @@ app/
 components/
   ui/                        # shadcn primitives (generated)
   brand/                     # Logo, Highlight
-  layout/                    # TopBar, PatientHeader (nav), PageHeader, SiteFooter
+  layout/                    # PatientHeader (nav), PageHeader, SiteFooter
   appointments/              # booking dialog, cards, list, AppointmentsProvider
   auth/                      # login/signup forms
   services/
@@ -72,7 +72,7 @@ lib/
 
 ## Booking
 
-- Visit types and formats (telehealth / in person) are defined once in `lib/schemas/appointments.ts`; label lookups in `lib/appointments.ts`. Add new services to `lib/services.ts` with a matching visit type.
+- Visit types are defined once in `lib/schemas/appointments.ts`; label lookups in `lib/appointments.ts`. Add new services to `lib/services.ts` with a matching visit type. There is no telehealth/visit-format option: visits are booked by type, provider, date and time. The provider list can be long, so its `Select` is height-capped and scrolls.
 - Open booking via `<BookVisitButton defaultVisitType? />`; rescheduling reuses `BookingDialog` with an `appointment`. Don't build a second booking form.
 - `AppointmentsProvider` / `useAppointments()` hold appointments in memory (reset on full reload). When the API lands, reimplement its internals with react-query and keep the hook's shape.
 

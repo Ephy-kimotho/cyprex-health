@@ -4,12 +4,7 @@ import { Sprout } from "lucide-react"
 
 import { BookVisitButton } from "@/components/appointments/book-visit-button"
 import { useAppointments } from "@/components/appointments/appointments-provider"
-import {
-  getProvider,
-  getVisitModeLabel,
-  getVisitTypeLabel,
-  sortByStart,
-} from "@/lib/appointments"
+import { getProvider, getVisitTypeLabel, sortByStart } from "@/lib/appointments"
 import { formatLongDate, formatTime } from "@/lib/format"
 
 export function NextVisitCard({ firstName }: { firstName: string }) {
@@ -50,9 +45,6 @@ export function NextVisitCard({ firstName }: { firstName: string }) {
             <p className="text-white/85">
               {formatTime(next.time)} · {getVisitTypeLabel(next.visitType)}
               {provider && ` with ${provider.name}`}
-            </p>
-            <p className="mt-1 text-sm text-white/70">
-              {getVisitModeLabel(next.mode)}
             </p>
           </>
         ) : (

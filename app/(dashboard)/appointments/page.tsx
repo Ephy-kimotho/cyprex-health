@@ -12,7 +12,7 @@ export default function AppointmentsPage() {
       <PageHeader
         eyebrow="Appointments"
         title="Your visits"
-        description="Book, reschedule or cancel telehealth and in-person visits."
+        description="Book, reschedule or cancel your visits."
         action={<BookVisitButton />}
       />
       <AppointmentsList />

@@ -12,6 +12,15 @@ export const providers = [
     name: "Cyprine Manduku",
     role: "Adult-gerontology care",
   },
+  // Placeholder entries to size the provider list until the API supplies it.
+  { id: "provider-sample-a", name: "Alex Sample", role: "Family medicine" },
+  { id: "provider-sample-b", name: "Blake Sample", role: "Internal medicine" },
+  { id: "provider-sample-c", name: "Casey Sample", role: "Women's health" },
+  { id: "provider-sample-d", name: "Drew Sample", role: "Men's health" },
+  { id: "provider-sample-e", name: "Emery Sample", role: "Weight management" },
+  { id: "provider-sample-f", name: "Finley Sample", role: "Primary care" },
+  { id: "provider-sample-g", name: "Gray Sample", role: "Hormone therapy" },
+  { id: "provider-sample-h", name: "Harper Sample", role: "Family medicine" },
 ]
 
 export const samplePatient = {
@@ -34,7 +43,6 @@ export const sampleAppointments: Appointment[] = [
     id: "apt-1",
     providerId: "cyprine-manduku",
     visitType: "follow-up",
-    mode: "telehealth",
     date: addDays(today, 8),
     time: "14:00",
     status: "upcoming",
@@ -43,7 +51,6 @@ export const sampleAppointments: Appointment[] = [
     id: "apt-2",
     providerId: "cyprine-manduku",
     visitType: "weight-loss",
-    mode: "in-person",
     date: addDays(today, -28),
     time: "10:30",
     status: "completed",

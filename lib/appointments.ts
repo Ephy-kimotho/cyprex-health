@@ -1,10 +1,8 @@
 import { parse } from "date-fns"
 
 import {
-  visitModes,
   visitTypes,
   type Appointment,
-  type VisitMode,
   type VisitType,
 } from "@/lib/schemas/appointments"
 import { providers } from "@/lib/sample-data"
@@ -29,10 +27,6 @@ export function sortByStart(appointments: Appointment[]) {
 
 export function getVisitTypeLabel(value: VisitType) {
   return visitTypes.find((type) => type.value === value)?.label ?? value
-}
-
-export function getVisitModeLabel(value: VisitMode) {
-  return visitModes.find((mode) => mode.value === value)?.label ?? value
 }
 
 export function getProvider(providerId: string) {

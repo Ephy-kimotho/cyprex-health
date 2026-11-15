@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CalendarClock, MapPin, Video, X } from "lucide-react"
+import { CalendarClock, X } from "lucide-react"
 
 import { useAppointments } from "@/components/appointments/appointments-provider"
 import { BookingDialog } from "@/components/appointments/booking-dialog"
@@ -16,11 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import {
-  getProvider,
-  getVisitModeLabel,
-  getVisitTypeLabel,
-} from "@/lib/appointments"
+import { getProvider, getVisitTypeLabel } from "@/lib/appointments"
 import {
   formatDayOfMonth,
   formatLongDate,
@@ -38,7 +34,6 @@ export function AppointmentCard({ appointment }: { appointment: Appointment }) {
 
   const provider = getProvider(appointment.providerId)
   const isUpcoming = appointment.status === "upcoming"
-  const ModeIcon = appointment.mode === "telehealth" ? Video : MapPin
 
   return (
     <div
@@ -64,18 +59,16 @@ export function AppointmentCard({ appointment }: { appointment: Appointment }) {
             {formatShortDate(appointment.date)} · {formatTime(appointment.time)}
             {provider && ` · ${provider.name}`}
           </p>
-          <div className="flex flex-wrap gap-1.5">
-            <Badge variant="secondary">
-              <ModeIcon />
-              {getVisitModeLabel(appointment.mode)}
-            </Badge>
-            {appointment.status === "cancelled" && (
-              <Badge variant="destructive">Cancelled</Badge>
-            )}
-            {appointment.status === "completed" && (
-              <Badge variant="outline">Completed</Badge>
-            )}
-          </div>
+          {!isUpcoming && (
+            <div className="flex flex-wrap gap-1.5">
+              {appointment.status === "cancelled" && (
+                <Badge variant="destructive">Cancelled</Badge>
+              )}
+              {appointment.status === "completed" && (
+                <Badge variant="outline">Completed</Badge>
+              )}
+            </div>
+          )}
         </div>
       </div>
 

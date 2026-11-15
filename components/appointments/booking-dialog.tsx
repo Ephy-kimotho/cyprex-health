@@ -42,7 +42,6 @@ import { formatLongDate, formatTime } from "@/lib/format"
 import { providers } from "@/lib/sample-data"
 import {
   bookingSchema,
-  visitModes,
   visitTypes,
   type Appointment,
   type BookingInput,
@@ -108,7 +107,6 @@ function BookingForm({
     defaultValues: {
       providerId: appointment?.providerId ?? providers[0]?.id ?? "",
       visitType: appointment?.visitType ?? defaultVisitType,
-      mode: appointment?.mode ?? "telehealth",
       date: appointment?.date,
       time: appointment?.time,
     },
@@ -153,61 +151,39 @@ function BookingForm({
           )}
         />
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          <Controller
-            control={form.control}
-            name="providerId"
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor="providerId">Provider</FieldLabel>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger
-                    id="providerId"
-                    className="h-10! w-full"
-                    aria-invalid={fieldState.invalid}
-                  >
-                    <SelectValue placeholder="Select a provider" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {providers.map((provider) => (
-                      <SelectItem key={provider.id} value={provider.id}>
-                        {provider.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FieldError errors={[fieldState.error]} />
-              </Field>
-            )}
-          />
-
-          <Controller
-            control={form.control}
-            name="mode"
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor="mode">Visit format</FieldLabel>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger
-                    id="mode"
-                    className="h-10! w-full"
-                    aria-invalid={fieldState.invalid}
-                  >
-                    <SelectValue placeholder="Telehealth or in person" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {visitModes.map((mode) => (
-                      <SelectItem key={mode.value} value={mode.value}>
-                        {mode.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FieldError errors={[fieldState.error]} />
-              </Field>
-            )}
-          />
-        </div>
+        <Controller
+          control={form.control}
+          name="providerId"
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="providerId">Provider</FieldLabel>
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger
+                  id="providerId"
+                  className="h-10! w-full"
+                  aria-invalid={fieldState.invalid}
+                >
+                  <SelectValue placeholder="Select a provider" />
+                </SelectTrigger>
+                <SelectContent position="popper" className="max-h-72">
+                  {providers.map((provider) => (
+                    <SelectItem
+                      key={provider.id}
+                      value={provider.id}
+                      textValue={provider.name}
+                    >
+                      {provider.name}
+                      <span className="text-muted-foreground">
+                        {provider.role}
+                      </span>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FieldError errors={[fieldState.error]} />
+            </Field>
+          )}
+        />
 
         <Controller
           control={form.control}
